@@ -7,7 +7,7 @@ WORKDIR /usr/src/oereb_server
 COPY ./dev-requirements.txt .
 COPY development.ini .
 COPY oereb_server .
-COPY oereb_server.py .
+COPY run_oereb_server.py .
 COPY production.ini .
 COPY pyramid_oereb_standard.mako .
 COPY requirements.txt .
