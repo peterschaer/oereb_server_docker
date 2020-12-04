@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from oereb_server import __version__
-import oereb_server
 import setuptools
 import os
 import codecs
