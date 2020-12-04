@@ -74,7 +74,7 @@ pyramid_oereb:
     # The map size (in millimeters) used to calculate the size of the requested map (for pdf export only).
     pdf_map_size_millimeters: [174, 99]
     # Base URL with application of the print server
-    base_url: http://${PRINT_SERVICE_HOST}:${PRINT_SERVICE_PORT}/print/print/oereb
+    base_url: http://${PRINT_SERVICE_HOST}:${PRINT_SERVICE_PORT}/print/oereb
     # Name of the print template to use
     template_name: A4 portrait
     # The headers sent to the print
