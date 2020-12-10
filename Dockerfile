@@ -1,4 +1,4 @@
-FROM alpine:3.12.1
+FROM python:3.8.6-slim-buster
 
 WORKDIR /usr/src
 RUN mkdir oereb_server
@@ -13,10 +13,15 @@ COPY requirements.txt .
 COPY setup.py .
 COPY ./oereb_server/. ./oereb_server/.
 
-RUN apk add --no-cache build-base python3 python3-dev geos geos-dev libffi libffi-dev libxml2 libxml2-dev libxslt libxslt-dev postgresql-dev libc-dev gcc tini su-exec
-RUN python3 -m ensurepip
-RUN pip3 install wheel setuptools
-RUN pip3 install --no-cache-dir --requirement requirements.txt
+RUN apt update && \
+    DEV_PACKAGES="build-essential libgeos-dev" && \
+    DEBIAN_FRONTEND=noninteractive apt install --yes --no-install-recommends \
+        libgeos-c1v5 gosu tini ${DEV_PACKAGES} && \
+    pip install --disable-pip-version-check --no-cache-dir --requirement requirements.txt && \
+    apt remove --purge --autoremove --yes ${DEV_PACKAGES} binutils && \
+    apt-get clean && \
+    rm --force --recursive /var/lib/apt/lists/*
+
 RUN python3 setup.py develop
 
-ENTRYPOINT ["python3", "run_oereb_server.py"]
+ENTRYPOINT ["python", "run_oereb_server.py"]
