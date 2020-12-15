@@ -2,6 +2,8 @@
 from pyramid.paster import get_app, setup_logging
 from waitress import serve
 from mako.template import Template
+import paste
+from paste.translogger import TransLogger
 import codecs
 import os
 
@@ -22,7 +24,8 @@ def main():
     ini_path = 'development.ini'
     setup_logging(ini_path)
     application = get_app(ini_path, 'main')
-    serve(application, listen='*:6543')
+    
+    serve(paste.translogger.TransLogger(application, setup_console_handler=False), listen='*:6543')
 
 if __name__ == "__main__":
     main()
