@@ -3,6 +3,7 @@ from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
 from pyramid.httpexceptions import HTTPNotFound
 from pyramid.httpexceptions import HTTPOk
+from pyramid_oereb.contrib.stats.decorators import log_response
 
 def get_parameter_value(possible_parameter_names, request):
 
@@ -14,7 +15,7 @@ def get_parameter_value(possible_parameter_names, request):
 
     return value
 
-@view_config(route_name='wo_redirect')
+@view_config(route_name='wo_redirect', decorator=log_response)
 def wo_redirect(request):
     egrid = get_parameter_value(['egrid', 'EGRID', 'Egrid'], request)
     language = get_parameter_value(['lang','LANG','Lang'], request)

@@ -22,3 +22,5 @@ test
 *.code-workspace
 .vscode/*
 pyramid_oereb_standard.yml
+development.ini
+production.ini
