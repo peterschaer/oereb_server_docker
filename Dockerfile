@@ -1,4 +1,4 @@
-FROM python:3.6.12-slim-buster
+FROM python:3.8.7-slim-buster
 
 WORKDIR /usr/src
 RUN mkdir oereb_server
