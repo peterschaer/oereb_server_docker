@@ -5,9 +5,9 @@ RUN mkdir oereb_server
 WORKDIR /usr/src/oereb_server
 
 COPY ./dev-requirements.txt .
-COPY development.ini .
+COPY development.mako .
 COPY run_oereb_server.py .
-COPY production.ini .
+COPY production.mako .
 COPY pyramid_oereb_standard.mako .
 COPY requirements.txt .
 COPY setup.py .
