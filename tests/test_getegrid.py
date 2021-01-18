@@ -115,7 +115,7 @@ def test_getegrid_invalid_identdn_xml(running_server_instance):
 # GETEGRID ADDRESS
 ##################
 def test_getegrid_valid_address_json(running_server_instance):
-    url = running_server_instance + "/getegrid/json/3011/Reiterstrasse/11"
+    url = running_server_instance + "/getegrid/json/3013/Reiterstrasse/11"
     res = requests.get(url)
     res_json = res.json()
     assert res.status_code == 200
@@ -127,7 +127,7 @@ def test_getegrid_invalid_address_json(running_server_instance):
     assert res.status_code == 204
 
 def test_getegrid_valid_address_xml(running_server_instance):
-    url = running_server_instance + "/getegrid/xml/3011/Reiterstrasse/11"
+    url = running_server_instance + "/getegrid/xml/3013/Reiterstrasse/11"
     res = requests.get(url)
     xml_root = ET.fromstring(res.text)
     assert res.status_code == 200

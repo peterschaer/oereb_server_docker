@@ -12,6 +12,7 @@ COPY pyramid_oereb_standard.mako .
 COPY requirements.txt .
 COPY setup.py .
 COPY ./oereb_server/. ./oereb_server/.
+COPY ./tests/. ./tests/.
 
 RUN apt update && \
     DEV_PACKAGES="build-essential libgeos-dev" && \
