@@ -25,4 +25,10 @@ RUN apt update && \
 
 RUN python setup.py develop
 
-ENTRYPOINT ["python", "run_oereb_server.py"]
+RUN groupadd oereb && useradd -g oereb oerebrunner
+
+RUN chown -R oerebrunner:oereb /usr/src/oereb_server
+
+ENTRYPOINT [ "gosu", "oerebrunner", "tini", "--" ]
+
+CMD ["python", "/usr/src/oereb_server/run_oereb_server.py"]
