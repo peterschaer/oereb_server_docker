@@ -1,4 +1,4 @@
-FROM python:3.8.7-slim-buster
+FROM python:3.6.12-slim-buster
 
 WORKDIR /usr/src
 RUN mkdir oereb_server
@@ -22,6 +22,6 @@ RUN apt update && \
     apt-get clean && \
     rm --force --recursive /var/lib/apt/lists/*
 
-RUN python3 setup.py develop
+RUN python setup.py develop
 
 ENTRYPOINT ["python", "run_oereb_server.py"]
