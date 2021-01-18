@@ -5,7 +5,7 @@ import psycopg2
 
 @pytest.fixture(scope="module")
 def config():
-    with codecs.open(r"E:\Daten\repos\oereb_server\pyramid_oereb_standard.yml", "r", "utf-8") as cf:
+    with codecs.open(r"pyramid_oereb_standard.yml", "r", "utf-8") as cf:
         return yaml.load(cf, Loader=yaml.FullLoader)
 
 @pytest.fixture(scope="module")
